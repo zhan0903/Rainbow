@@ -51,6 +51,7 @@ random.seed(args.seed)
 torch.manual_seed(random.randint(1, 10000))
 if torch.cuda.is_available() and not args.disable_cuda:
   args.device = torch.device('cuda:1')
+  torch.cuda.set_device(args.device)
   torch.cuda.manual_seed(random.randint(1, 10000))
   torch.backends.cudnn.enabled = False  # Disable nondeterministic ops (not sure if critical but better safe than sorry)
 else:
